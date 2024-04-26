@@ -16,7 +16,6 @@ namespace Data_Input_Validation
         public bool HasErrors => Errors.Count > 0;
 
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-        public event PropertyChangedEventHandler? PropertyChanged;
 
         public IEnumerable GetErrors(string? propertyName)
         {

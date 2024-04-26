@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
 
@@ -17,7 +13,6 @@ namespace Data_Input_Validation
         //public bool HasErrors => Errors.Count > 0;
 
         //public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-        //public event PropertyChangedEventHandler? PropertyChanged;
 
         //public IEnumerable GetErrors(string? propertyName)
         //{
