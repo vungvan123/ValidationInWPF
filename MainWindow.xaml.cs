@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace B_Validation_ByDataErrorInfo
+namespace Data_Input_Validation
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

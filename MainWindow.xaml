@@ -1,0 +1,60 @@
+﻿<Window x:Class="Data_Input_Validation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Data_Input_Validation"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid Margin="20 40 20 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <Label Content="Name"/>
+            <TextBox x:Name="Nametextbox" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=LostFocus, TargetNullValue=''}"  Height="35" Padding="6,0">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding LostFocusCommand}" CommandParameter="{Binding ElementName=Nametextbox, Path=Name }" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Label Content="{Binding ElementName=Nametextbox,Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" Padding="0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <Label  Content="Email" />
+            <TextBox x:Name="Emailtextbox" Text="{Binding Email,UpdateSourceTrigger=LostFocus}" Height="35">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding LostFocusCommand}" CommandParameter="{Binding ElementName=Emailtextbox, Path=Name }" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Label Content="{Binding ElementName=Emailtextbox,Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <Label Content="Password"/>
+            <TextBox x:Name="NamePassword" Text="{Binding Password,UpdateSourceTrigger=LostFocus}" Height="35" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding LostFocusCommand}" CommandParameter="{Binding ElementName=NamePassword, Path=Name }" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <Label Content="{Binding ElementName=NamePassword,Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red"/>
+        </StackPanel>
+
+        <Button  Grid.Row="3" Height="35" Command="{Binding SubmitCommand}"  Focusable="True" Content="Submit" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

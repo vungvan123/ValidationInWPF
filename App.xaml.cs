@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace D_Validation_ByAnnotations
+namespace Data_Input_Validation
 {
     /// <summary>
     /// Interaction logic for App.xaml
